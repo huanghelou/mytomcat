@@ -24,7 +24,7 @@ public class Request {
 	}
 
 	/**
-	 * 截取请求信息中2个空格之间的内容
+	 * 瑙ｆ瀽uri,瑙ｆ瀽鍑轰袱涓┖鏍间腑闂寸殑鍐呭
 	 * @param requestString
 	 * @return
 	 */
