@@ -43,7 +43,8 @@ public class HttpServer {
 				request.parse();
 				
 				//创建响应对象
-				Response response = new Response(request);
+				Response response = new Response(output);
+				response.setRequest(request);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}

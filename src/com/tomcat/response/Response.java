@@ -18,10 +18,18 @@ public class Response {
 	 * 通过请求来给出响应,所以构造函数中传入Request
 	 * @param request
 	 */
-	public Response(Request request){
-		this.request = request;
+	public Response(OutputStream output){
+		this.output = output;
 	}
 	
+	
+	
+	public void setRequest(Request request) {
+		this.request = request;
+	}
+
+
+
 	public void sendStaticResource() throws IOException{
 		byte[] bytes = new byte[BUFFER_SIZE];
 		FileInputStream fileInputStream = null;
