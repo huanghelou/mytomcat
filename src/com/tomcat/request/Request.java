@@ -12,16 +12,24 @@ public class Request {
 		this.input = input;
 	}
 	
-	public void parse() throws IOException{
-		
-		StringBuffer request = new StringBuffer(2048);
-		byte[] buffer = new byte[2048];
-		while(input.read(buffer) != -1){
-			request.append(new String(buffer));
-		}
-		System.out.println(request);
-		uri = parseUri(request.toString());
-	}
+	public void parse() {
+	    // Read a set of characters from the socket
+	    StringBuffer request = new StringBuffer(2048);
+	    int i;
+	    byte[] buffer = new byte[2048];
+	    try {
+	      i = input.read(buffer);
+	    }
+	    catch (IOException e) {
+	      e.printStackTrace();
+	      i = -1;
+	    }
+	    for (int j=0; j<i; j++) {
+	      request.append((char) buffer[j]);
+	    }
+	    System.out.print(request.toString());
+	    uri = parseUri(request.toString());
+	  }
 
 	/**
 	 * 解析uri,解析出两个空格中间的内容
