@@ -19,6 +19,11 @@ public class HttpServer {
 	
 	private boolean shutdown = false;
 	
+	/**
+	 * 关闭命令
+	 */
+	private static final String SHUTDOWN_COMMAND = "/SHUTDOWN";
+	
 	public void await(){
 		ServerSocket serverSocket = null;
 		int port = 9999;
@@ -45,20 +50,18 @@ public class HttpServer {
 				//创建响应对象
 				Response response = new Response(output);
 				response.setRequest(request);
+				response.sendStaticResource();
+
+		        //关闭socket
+		        socket.close();
+
+		        //通过请求中的关闭命令来控制是否关闭
+		        shutdown = request.getUri().equals(SHUTDOWN_COMMAND);
 			} catch (Exception e) {
-				// TODO: handle exception
+				e.printStackTrace();
+		        continue;
 			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+	
 			
 		}
 	}

@@ -6,7 +6,8 @@ public class BootStrap {
 
 	public static void main(String[] args) throws IOException {
 		
-
+		HttpServer server = new HttpServer();
+		server.await();
 	}
 
 }
