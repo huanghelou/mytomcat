@@ -13,7 +13,7 @@ public class Request {
 	}
 	
 	public void parse() {
-	    // Read a set of characters from the socket
+	    //从socket的InputStream中解析请求
 	    StringBuffer request = new StringBuffer(2048);
 	    int i;
 	    byte[] buffer = new byte[2048];
@@ -52,5 +52,16 @@ public class Request {
 		return uri;
 	}
 	
-	
+	/*
+	   * 这种逻辑每次从请求中解析,会pending.不知道为什么,等学到后面了在解决这个问题
+	   * public void parse() throws IOException{
+			
+			StringBuffer request = new StringBuffer(2048);
+			byte[] buffer = new byte[2048];
+			while(input.read(buffer) != -1){
+				request.append(new String(buffer));
+			}
+			System.out.println(request);
+			uri = parseUri(request.toString());
+		}*/
 }
